@@ -1,0 +1,140 @@
+Sofian_onePlus3:
+  name: Sofian Phone
+  mac: C0:EE:FB:DD:54:39
+  picture: None
+  track: yes
+  hide_if_away: no
+20a680cc23c9:
+  hide_if_away: false
+  icon:
+  mac: 20:A6:80:CC:23:C9
+  name: 20a680cc23c9
+  picture:
+  track: false
+  vendor: HUAWEI TECHNOLOGIES CO.,LTD
+
+dcd916f810c7:
+  hide_if_away: false
+  icon:
+  mac: DC:D9:16:F8:10:C7
+  name: dcd916f810c7
+  picture:
+  track: false
+  vendor: unknown
+
+48db508a97f5:
+  hide_if_away: false
+  icon:
+  mac: 48:DB:50:8A:97:F5
+  name: 48db508a97f5
+  picture:
+  track: false
+  vendor: unknown
+
+accf5cc7d16f:
+  hide_if_away: false
+  icon:
+  mac: AC:CF:5C:C7:D1:6F
+  name: accf5cc7d16f
+  picture:
+  track: false
+  vendor: Apple, Inc.
+
+4888cafdd1f5:
+  hide_if_away: false
+  icon:
+  mac: 48:88:CA:FD:D1:F5
+  name: 4888cafdd1f5
+  picture:
+  track: false
+  vendor: unknown
+
+44746c50b465:
+  hide_if_away: false
+  icon:
+  mac: 44:74:6C:50:B4:65
+  name: 44746c50b465
+  picture:
+  track: false
+  vendor: unknown
+
+5ca86a02a76e:
+  hide_if_away: false
+  icon:
+  mac: 5C:A8:6A:02:A7:6E
+  name: 5ca86a02a76e
+  picture:
+  track: false
+  vendor: unknown
+
+587f66a375b6:
+  hide_if_away: false
+  icon:
+  mac: 58:7F:66:A3:75:B6
+  name: 587f66a375b6
+  picture:
+  track: false
+  vendor: unknown
+
+502e5cdca644:
+  hide_if_away: false
+  icon:
+  mac: 50:2E:5C:DC:A6:44
+  name: 502e5cdca644
+  picture:
+  track: false
+  vendor: unknown
+
+08edb9b219f1:
+  hide_if_away: false
+  icon:
+  mac: 08:ED:B9:B2:19:F1
+  name: 08edb9b219f1
+  picture:
+  track: false
+  vendor: Hon Hai Precision Ind. Co.,Ltd.
+
+e49a79c22faa:
+  hide_if_away: false
+  icon:
+  mac: E4:9A:79:C2:2F:AA
+  name: e49a79c22faa
+  picture:
+  track: false
+  vendor: unknown
+
+c4438f4b2496:
+  hide_if_away: false
+  icon:
+  mac: C4:43:8F:4B:24:96
+  name: c4438f4b2496
+  picture:
+  track: false
+  vendor: unknown
+
+a80c63abfa1a:
+  hide_if_away: false
+  icon:
+  mac: A8:0C:63:AB:FA:1A
+  name: a80c63abfa1a
+  picture:
+  track: false
+  vendor: unknown
+
+6cadf81ad5ad:
+  hide_if_away: false
+  icon:
+  mac: 6C:AD:F8:1A:D5:AD
+  name: 6cadf81ad5ad
+  picture:
+  track: false
+  vendor: AzureWave Technology Inc.
+
+5ccf7f8804ef:
+  hide_if_away: false
+  icon:
+  mac: 5C:CF:7F:88:04:EF
+  name: 5ccf7f8804ef
+  picture:
+  track: false
+  vendor: Espressif Inc.

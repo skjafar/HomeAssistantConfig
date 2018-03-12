@@ -1,0 +1,133 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 32.06
+  longitude: 36.09
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 620
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Asia/Amman
+  
+
+  customize:
+    sensor.dht_sensor_temperature:
+      friendly_name: Temperature
+    sensor.dht_sensor_humidity:
+      friendly_name: Relative Humidity
+      icon: mdi:water-percent
+    sensor.living_room_temperature:
+      friendly_name: Temperature
+    sensor.living_room_relative_humidity:
+      friendly_name: Relative Humidity
+      icon: mdi:water-percent
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  # api_password: PASSWORD
+  # Uncomment this if you are using SSL or running in Docker etc
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+#history:
+
+# View all events in a logbook
+#logbook:
+
+# Track the sun
+sun:
+
+mqtt:
+  broker: localhost
+
+# Weather Prediction
+sensor:
+  - platform: yr
+    monitored_conditions:
+      - temperature
+      - symbol
+      - windSpeed
+      - pressure
+      - windDirection
+      - humidity
+
+  - platform: dht         # locally connected DHT22 sensor on BBB
+    sensor: AM2302
+    pin: P9_12
+    monitored_conditions:
+      - temperature
+      - humidity
+
+# The various sensors and mqtt devices
+sensor 1:
+  - platform: mqtt
+    name: "Living Room Temperature"
+    unit_of_measurement: "°C"
+    state_topic: "/Living_Room/DHT11/Temperature"
+  - platform: mqtt
+    name: "Living Room Relative Humidity"
+    unit_of_measurement: "%"
+    state_topic: "/Living_Room/DHT11/Humidity"
+  - platform: mqtt
+    name: "AC Remote Commands"
+    state_topic: "/Living_Room/IR"
+  - platform: mqtt
+    name: "Water Flow Meter Count"
+    state_topic: "/Living_Room/WaterFlow/Count"
+  - platform: mqtt
+    name: "Water Flow Meter Total"
+    state_topic: "/Living_Room/WaterFlow/Total"
+  - platform: mqtt
+    name: "Water Flow Meter Time"
+    state_topic: "/Living_Room/WaterFlow/Time"
+
+input_number:
+  ac1_set_temp:
+    name: ACTemp
+    min: 20
+    initial: 25
+    max: 30
+    step: 1
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer-lines
+
+input_select:
+  ac1_mode:
+    name: AC heating or cooling
+    options:
+    - Cooling
+    - Heating
+    initial: Cooling
+    icon: mdi:snowflake
+
+# Text to speech
+tts:
+  platform: google
+
+group: !include groups.yaml
+automation: !include automations.yaml
+#device_tracker: !include device_trackers.yaml

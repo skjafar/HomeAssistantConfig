@@ -1,0 +1,6 @@
+platform: ddwrt
+host: 192.168.8.2
+username: skjafar
+password: soofee
+track_new_devices: no
+interval_seconds: 5

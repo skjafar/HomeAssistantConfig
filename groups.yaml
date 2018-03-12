@@ -1,0 +1,55 @@
+default_view:
+  view: true
+  icon: mdi:home
+  entities:
+  - group.office_climate
+  - group.living_room_climate
+  - group.ac_control
+#  - group.weather
+  - group.water
+  - group.media_players
+  name: default_view
+office_climate:
+  name: Office Climate
+  icon: mdi:oil-temperature
+  entities:
+  - sensor.dht_sensor_temperature
+  - sensor.dht_sensor_humidity
+living_room_climate:
+  name: Living Room Climate
+  icon: mdi:oil-temperature
+  entities:
+  - sensor.living_room_temperature
+  - sensor.living_room_relative_humidity
+  - sensor.ac_remote_commands
+ac_control:
+  name: AC Control
+  icon: mdi:oil-temperature
+  entities:
+  - input_number.ac1_set_temp
+  - input_select.ac1_mode
+weather:
+  name: Weather
+  entities:
+  - sensor.yr_symbol
+  - sun.sun
+  - sensor.yr_temperature
+  - sensor.yr_wind_speed
+  - sensor.yr_wind_direction
+  - sensor.yr_humidity
+  - sensor.yr_pressure
+water:
+  name: Water Control
+  icon: mdi:water
+  view: true
+  entities:
+  - switch.water_pump
+  - sensor.water_flow_meter_count
+  - sensor.water_flow_meter_total
+  - sensor.water_flow_meter_time
+media_players:
+  name: Media Players
+  icon: mdi:play-pause
+  view: false
+  entities:
+  - media_player.home_sweet_chrome
