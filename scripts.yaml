@@ -1,0 +1,45 @@
+set_ac_mode:
+  sequence:
+    - service: mqtt.publish
+      # Note the use of 'data_template:' below rather than the normal 'data:' if you weren't using an input variable
+      data_template:
+        topic: '/IRRemote/AC/Mode'
+        payload: "{{ states('input_select.ac1_mode') }}"
+
+set_ac_temperature:
+  sequence:
+    - service: mqtt.publish
+      # Note the use of 'data_template:' below rather than the normal 'data:' if you weren't using an input variable
+      data_template:
+        topic: '/IRRemote/AC/Temp'
+        payload: "{{ states('input_number.ac1_set_temp') | int }}"
+
+set_ac_mode_then_temperature:
+  sequence:
+    - service: script.set_ac_mode
+    - delay: 00:00:01                       #wait one second then send the temperature
+    - service: script.set_ac_temperature
+
+tv_power_button:
+  sequence:
+    - service: mqtt.publish
+      # Note the use of 'data_template:' below rather than the normal 'data:' if you weren't using an input variable
+      data:
+        topic: '/IRRemote/TV/Command'
+        payload: "p"
+
+tv_volume_up_button:
+  sequence:
+    - service: mqtt.publish
+      # Note the use of 'data_template:' below rather than the normal 'data:' if you weren't using an input variable
+      data:
+        topic: '/IRRemote/TV/Command'
+        payload: "u"
+
+tv_volume_down_button:
+  sequence:
+    - service: mqtt.publish
+      # Note the use of 'data_template:' below rather than the normal 'data:' if you weren't using an input variable
+      data:
+        topic: '/IRRemote/TV/Command'
+        payload: "d"

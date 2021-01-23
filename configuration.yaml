@@ -24,6 +24,20 @@ homeassistant:
       friendly_name: Relative Humidity
       icon: mdi:water-percent
 
+    switch.ac_remote_switch:
+      friendly_name: "On/Off"
+      icon: mdi:power
+
+    script.tv_power_button:
+      friendly_name: "On/Off"
+      icon: mdi:power
+    script.tv_volume_up_button:
+      friendly_name: "Volume Up"
+      icon: mdi:volume-high
+    script.tv_volume_down_button:
+      friendly_name: "Volume Down"
+      icon: mdi:volume-medium
+
 # Show links to resources in log and frontend
 #introduction:
 
@@ -58,22 +72,30 @@ conversation:
 # View all events in a logbook
 #logbook:
 
+# HA Cloud for Google Assistant
+cloud:
+
 # Track the sun
 sun:
 
 mqtt:
-  broker: localhost
+  #broker: localhost
 
 # Weather Prediction
 sensor:
-  - platform: yr
+  # - platform: yr
+  #   forecast: 24
+  #   monitored_conditions:
+  #     - temperature
+  #     - symbol
+  #     - precipitation
+  - platform: yweather
     monitored_conditions:
+      - weather
+      - weather_current
+      - temp_min
+      - temp_max
       - temperature
-      - symbol
-      - windSpeed
-      - pressure
-      - windDirection
-      - humidity
 
   - platform: dht         # locally connected DHT22 sensor on BBB
     sensor: AM2302
@@ -87,14 +109,11 @@ sensor 1:
   - platform: mqtt
     name: "Living Room Temperature"
     unit_of_measurement: "°C"
-    state_topic: "/Living_Room/DHT11/Temperature"
+    state_topic: "/Living_Room/DHT22/Temperature"
   - platform: mqtt
     name: "Living Room Relative Humidity"
     unit_of_measurement: "%"
-    state_topic: "/Living_Room/DHT11/Humidity"
-  - platform: mqtt
-    name: "AC Remote Commands"
-    state_topic: "/Living_Room/IR"
+    state_topic: "/Living_Room/DHT22/Humidity"
   - platform: mqtt
     name: "Water Flow Meter Count"
     state_topic: "/Living_Room/WaterFlow/Count"
@@ -105,9 +124,11 @@ sensor 1:
     name: "Water Flow Meter Time"
     state_topic: "/Living_Room/WaterFlow/Time"
 
+############ AC entires
+##Input fields##
 input_number:
   ac1_set_temp:
-    name: ACTemp
+    name: Set Temperature
     min: 20
     initial: 25
     max: 30
@@ -117,12 +138,23 @@ input_number:
 
 input_select:
   ac1_mode:
-    name: AC heating or cooling
+    name: Heating or Cooling
     options:
     - Cooling
     - Heating
     initial: Cooling
     icon: mdi:snowflake
+
+switch:
+  - platform: mqtt
+    name: "AC Remote Switch"
+    state_topic: "/IRRemote/AC/Remote_Status"
+    command_topic: "/IRRemote/AC/Switch_Remote_On"
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    qos: 0
+    retain: false
 
 # Text to speech
 tts:
@@ -130,4 +162,6 @@ tts:
 
 group: !include groups.yaml
 automation: !include automations.yaml
+script: !include scripts.yaml
+
 #device_tracker: !include device_trackers.yaml

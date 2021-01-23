@@ -1,1 +1,31 @@
-[]
+- alias: AC - Send command
+  trigger:
+  - platform: state
+    entity_id: switch.ac_remote_switch
+  - platform: state
+    entity_id: input_number.ac1_set_temp
+  - platform: state
+    entity_id: input_select.ac1_mode
+  action:
+    service: script.set_ac_mode_then_temperature
+
+# - alias: AC - Set Temperature
+#   trigger:
+#     platform: state
+#     entity_id: input_number.ac1_set_temp
+#   action:
+#     service: script.set_ac_mode_then_temperature
+
+# - alias: AC - Set Mode
+#   trigger:
+#     platform: state
+#     entity_id: input_select.ac1_mode
+#   action:
+#     service: script.set_ac_mode_then_temperature
+
+
+# ##mqtt topics for above fields##
+# # AC_Temp_mqtt:
+# #   topic: /AC_Settings/Temp
+# # AC_Mode_mqtt:
+# #   topic: /AC_Settings/Mode
